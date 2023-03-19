@@ -30,7 +30,7 @@ def main():
         n = int(input())
         data = list(map(int, input().split()))
 
-    if 'F' in text:
+    if 'F' in txt:
         f = input()
         with open("tests/" + f, 'r') as file:
             n = int(file.readline())
