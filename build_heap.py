@@ -1,39 +1,46 @@
-def sift_down(data, i, swaps):
-    n = len(data)
-    min_index = i
+def sift_down(data, n, i, swaps):
 
     l = 2 * i + 1
+    t = 2 * i + 2
+    min_index = i
+    
     if l < n and data[l] < data[min_index]:
         min_index = l
 
-    r = 2 * i + 2
-    if r < n and data[r] < data[min_index]:
-        min_index = r
+    if t < n and data[t] < data[min_index]:
+        min_index = t
 
     if i != min_index:
         data[i], data[min_index] = data[min_index], data[i]
         swaps.append((i, min_index))
-        sift_down(data, min_index, swaps)
+        sift_down(data, n, min_index, swaps)
 
 
 def build_heap(data):
     n = len(data)
     swaps = []
 
-    for i in range(n // 2, -1, -1):
+    for i in range(n// 2 -1, -1, -1):
         sift_down(data, n, i, swaps)
 
     return swaps
 
 
 def main():
+    text = input()
     
-    n = int(input())
-    data = list(map(int, input().split()))
+    if 'I' in text:
+        k = int(input())
+        data = list(map(int, input().split()))
+        
+    if 'F' in text:
+        f = input()
+        with open("tests/" + f, 'r') as file:
+            k = int(file.readline())
+            data = list(map(int, file.readline().split()))
 
     
     assert len(data) == n
-    assert 1 <= n <= 10**5
 
     
     swaps = build_heap(data)
