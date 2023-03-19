@@ -1,27 +1,31 @@
-def sift_down(data, n, i, swaps):
+# Vasīlijs Dvils-Dmittrijevs 221RDB381
+
+
+def first(data, n, i, swaps):
 
     l = 2 * i + 1
     t = 2 * i + 2
-    min_index = i
+    r = i
     
-    if l < n and data[l] < data[min_index]:
-        min_index = l
+    if l < n and data[l] < data[r]:
+        r = l
 
-    if t < n and data[t] < data[min_index]:
-        min_index = t
+    if t < n and data[t] < data[r]:
+        r = t
 
-    if i != min_index:
-        data[i], data[min_index] = data[min_index], data[i]
-        swaps.append((i, min_index))
-        sift_down(data, n, min_index, swaps)
+    if r != i:
+        
+        swaps.append((i,r))
+        data[i], data[r] = data[r], data[i]
+        first(data, n, r, swaps)
 
 
-def build_heap(data):
-    n = len(data)
+def build_heap (data):
     swaps = []
+    n = len(data)
 
     for i in range(n// 2 -1, -1, -1):
-        sift_down(data, n, i, swaps)
+        first(data, n, i, swaps)
 
     return swaps
 
