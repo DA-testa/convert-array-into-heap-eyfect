@@ -21,7 +21,7 @@ def build_heap(data):
     swaps = []
 
     for i in range(n // 2, -1, -1):
-        sift_down(data, i, swaps)
+        sift_down(data, n, i, swaps)
 
     return swaps
 
