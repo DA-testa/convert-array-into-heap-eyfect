@@ -27,12 +27,18 @@ def build_heap(data):
 
 
 def main():
-    n = int(input().strip())
+    
+    n = int(input())
     data = list(map(int, input().split()))
+
+    
     assert len(data) == n
+    assert 1 <= n <= 10**5
 
-    build_heap(data)
+    
+    swaps = build_heap(data)
 
+    
     print(len(swaps))
     for i, j in swaps:
         print(i, j)
