@@ -1,8 +1,31 @@
 # python3
+# Vasīlijs Dvils-Dmitrijevs 221RDB381
 
 
+def sift_down(data):
+    n = len(data)
+    min = i
+    
+    l=2*i+1
+    if l < n and data[l] < data[min]:
+        min=l
+        
+    r=2*i+2
+    if r < n and data[r] < data[min]:
+        min=r
+        
+    if i != min:
+        data[i], data[min] = data[min], data[i]
+        swaps.append((i, min))
+        sift_down(data, min, swaps)
+        
+        
 def build_heap(data):
+    n = len(data)
     swaps = []
+    
+    for i in range(n // 2, -1, -1)
+        hpf(data, i, n, swaps)
     # TODO: Creat heap and heap sort
     # try to achieve  O(n) and not O(n2)
 
@@ -23,6 +46,7 @@ def main():
 
     # checks if lenght of data is the same as the said lenght
     assert len(data) == n
+    assert 1 <= n <= 10**5
 
     # calls function to assess the data 
     # and give back all swaps
